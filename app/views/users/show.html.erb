@@ -1,0 +1,14 @@
+<h1>This is the Users Show page</h1>
+<%= @user.email %>
+<%= @user.first_name%>
+<br>
+<h2>Attended Events:</h2>
+
+<% @events.all.each do |event|%>
+    <%= link_to event.title, event_path(event.id)%>
+    <br>
+<% end %>
+
+
+
+

@@ -1,0 +1,16 @@
+<h2><%= @event.title %>
+</h2>
+<p><%= @event.description %></p>
+<p><%= @event.event_date_time%></p>
+<br>
+<h3>Attendees:</h3>
+<% @event.attendees.all.each do |attendee|%>
+    <%= attendee.email%>
+    <br>
+    
+<% end %>
+<%= link_to "Attend?", attend_event_path(@event.id)%>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+

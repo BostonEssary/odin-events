@@ -1,0 +1,10 @@
+<h1>This is the Events index page</h1>
+
+
+<h2>Upcoming Events: </h2>
+<% @events.all.each do |event|%>
+    <%= link_to event.title, event_path(event.id)%>
+    <% this_event = event.id %>
+    <br>
+    
+<% end %>

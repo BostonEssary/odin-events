@@ -1,0 +1,17 @@
+<h1>This is the Create New Event page</h1>
+<%= form_with model: @event do |form| %>
+  <%= form.label :title, "Event Title: "%>
+  <%= form.text_field :title %>
+  <br>
+  <br>
+  <%= form.label :description, "Event Description: "%>
+  <br>
+  <%= form.text_area :description, size: "60x10" %>
+  <br>
+   <br>
+  <%= form.label :event_date_time, "Event Date and Time: "%>
+   <br>
+  <%= form.datetime_select :event_date_time %>
+   <br>
+  <%= form.submit %>
+<% end %>

@@ -1,0 +1,22 @@
+Date: 08-04-23
+
+felt good about the work done today. Felt good to solve problems in a natural feeling way instead of feeling rushed.
+
+Some things to work on tomorrow:
+
+User's
+    -Views
+        +Show and format correct data on User Show View
+        +create MyProfile Controller to seperate duties. Want to see if it makes an easier experience. Also just makes sense if
+        i want the My Profile to be more robust and scalable. also keeps the user controller clean and concise and has one job
+        
+
+
+Some misc notes:
+
+Ideas
+    +Make it so Post-Event photos can be uploaded to the event page, but only for 48 hours after the event has started. Then the 
+    event locks and creates a time capsule type object.
+        -User's Could still rate or comment on the event, as long as the were an attendee for the event
+            ?How could the user or I confirm attendence of the event if we only wanted TRUE attendees to be able to have interaction
+            permissions
