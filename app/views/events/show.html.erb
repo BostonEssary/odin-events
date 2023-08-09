@@ -2,7 +2,7 @@
 </h2>
 <p><%= @event.description %></p>
 <p><%= @event.event_date%></p>
-<p><%= @event.event_time%></p>
+<p><%= @time%></p>
 <br>
 <h3>Attendees:</h3>
 <% @event.attendees.all.each do |attendee|%>
