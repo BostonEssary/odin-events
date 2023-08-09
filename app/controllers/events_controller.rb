@@ -13,6 +13,7 @@ class EventsController < ApplicationController
     def show
         @event = Event.find(params[:id])
         @time = @event.event_time.strftime("%I:%M %p")
+        @date = @event.event_date.strftime("%B %d, %Y")
     end
 
 
