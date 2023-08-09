@@ -16,4 +16,7 @@
   h1 {
     @apply text-3xl
   }
+  h1 {
+    @apply text-2xl
+  }
 }
