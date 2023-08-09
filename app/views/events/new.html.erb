@@ -13,9 +13,13 @@
   <%= form.text_area :description, size: "60x10" %>
   <br>
    <br>
-  <%= form.label :event_date_time, "Event Date and Time: "%>
+  <%= form.label :event_date, "Date: "%>
    <br>
-  <%= form.datetime_select :event_date_time %>
+  <%= form.date_select :event_date %>
+   <br>
+   <%= form.label :event_time, "Time: "%>
+   <br>
+  <%= form.time_field :event_time %>
    <br>
   <%= form.submit %>
 <% end %>
