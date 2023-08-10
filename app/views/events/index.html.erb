@@ -2,7 +2,21 @@
 
 
 <h2>Upcoming Events: </h2>
-<% @events.all.each do |event|%>
+<% @events.future.each do |event|%>
+    <%= link_to event.title, event_path(event.id)%>
+    <% this_event = event.id %>
+    <br>
+<% end %>
+
+<h2>Today's Events: </h2>
+<% @events.current.each do |event|%>
+    <%= link_to event.title, event_path(event.id)%>
+    <% this_event = event.id %>
+    <br>
+<% end %>
+
+<h2>Past Events: </h2>
+<% @events.past.each do |event|%>
     <%= link_to event.title, event_path(event.id)%>
     <% this_event = event.id %>
     <br>
