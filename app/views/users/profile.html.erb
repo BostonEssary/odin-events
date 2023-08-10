@@ -1,1 +1,7 @@
 <h1>Welcome back,  <%= @user.first_name%>!</h1>
+
+
+<% @user.attended_events.all.each do |event|%>
+    <%= link_to event.title, event_path(event.id)%>
+    <br>
+<% end %>

@@ -2,12 +2,25 @@
 <%= @user.email %>
 <%= @user.first_name%>
 <br>
-<h2>Attended Events:</h2>
 
-<% @events.all.each do |event|%>
+<h2>Past Events:</h2>
+<% @user.attended_events.where("event_date < ?", Date.today).each do |event|%>
     <%= link_to event.title, event_path(event.id)%>
     <br>
 <% end %>
+
+<h2>Events I am going to today:</h2>
+<% @user.attended_events.where("event_date = ?", Date.today).each do |event|%>
+    <%= link_to event.title, event_path(event.id)%>
+    <br>
+<% end %>
+
+<h2>Future Events: </h2>
+<% @user.attended_events.where("event_date > ?", Date.today).each do |event|%>
+    <%= link_to event.title, event_path(event.id)%>
+    <br>
+<% end %>
+
 
 
 
