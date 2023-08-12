@@ -1,15 +1,15 @@
 class EventsController < ApplicationController
-    before_action :authenticate_user!
+    
+    skip_before_action :authenticate_user!, only: [:index]
+  
+
+    def index
+        @events = Event.all
+    end
 
     def new
         @event = Event.new()
     end
-
-    def index
-        @events = Event.all
-        @user = current_user.id
-    end
-
     def show
         @event = Event.find(params[:id])
         @time = @event.event_time.strftime("%I:%M %p")
