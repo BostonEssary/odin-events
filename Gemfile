@@ -77,3 +77,7 @@ gem 'bootstrap', '~> 5.3.0.alpha3'
 
 gem 'jquery-rails'
 
+gem 'ruby-vips', '~> 2.1', '>= 2.1.4'
+
+gem 'image_processing', '~> 1.2'
+

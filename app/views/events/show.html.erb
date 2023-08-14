@@ -3,7 +3,9 @@
   </h2>
   <p class="mb-8"><%= @date%></p>
   <p><%= @event.description %></p>
-  
+
+  <p><%= image_tag(@event.event_header.representation(resize_to_limit: [500, 500])) %></p>
+
   <p><%= @time%></p>
 </div>
 <br>
