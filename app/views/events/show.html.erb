@@ -8,6 +8,9 @@
 
   <p><%= @time%></p>
 </div>
+
+
+<%= link_to @event.creator.first_name, user_path(@event.creator.id)%>
 <br>
 <h3>Attendees:</h3>
 <% @event.attendees.all.each do |attendee|%>
