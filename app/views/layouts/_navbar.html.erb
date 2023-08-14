@@ -11,11 +11,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/events">Events</a>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Profile", profile_path, class: "nav-link active"%>
-        </li>
+        <% if user_signed_in? %>
+            <a class="nav-link active" aria-current="page" href="/events">Events</a>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Profile", profile_path, class: "nav-link active"%>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete, form_class: "nav-link active" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Log In", new_user_session_path, class: "nav-link active"%>
+          </li>
+        <% end %>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown

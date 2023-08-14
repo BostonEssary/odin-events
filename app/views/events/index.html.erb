@@ -1,57 +1,56 @@
 
-
-<div  class="event-hero container-fluid mb-4">
-    <div class="row h-100">
-        <div class="event-hero-content col-6 align-self-center ">
-            <h1 class="event-hero-header display-1 fwf-bold">thyme//capsule</h1>
-            <h2 class="event-hero-description display-5 fst-italic " >Where events are created and remembered</h2>
-            <% if user_signed_in? %>
-                <%= button_to "Create thyme//capsule", new_event_path, method: :get, form_class: "hero-button btn btn-primary btn-lg mt-4"  %>
-            <% else %>
-             <%= button_to "Log In", new_user_session_path, method: :get, form_class: "hero-button btn btn-primary btn-lg mt-4"  %>
-            <% end %>
+<div class="event-index">
+    <div  class="event-hero container-fluid mb-4">
+        <div class="row h-100">
+            <div class="event-hero-content col-6 align-self-center ">
+                <h1 class="event-hero-header display-1 fwf-bold">thyme//capsule</h1>
+                <h2 class="event-hero-description display-5 fst-italic " >Where events are created and remembered</h2>
+                <% if user_signed_in? %>
+                    <%= button_to "Create thyme//capsule", new_event_path, method: :get, form_class: "hero-button btn btn-primary btn-lg mt-4"  %>
+                <% else %>
+                <%= button_to "Log In", new_user_session_path, method: :get, form_class: "hero-button btn btn-primary btn-lg mt-4"  %>
+                <% end %>
+            </div>
         </div>
     </div>
-    <div class="row" >
-       
+    <div class="event-index-body">
+        <h2 class="display-5">Events happening today</h2>
+        <% @events.current.each do |event|%>
+            <div>
+                <%= link_to event.title, event_path(event.id)%>
+                <%= image_tag event.event_header.representation(resize_to_limit: [100, 100])
+        %>
+                <% this_event = event.id %>
+            </div>
+            <br>
+        <% end %>
+
+        <h2 class="display-5">Future Events</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+
+        <% @events.future.each do |event|%>
+        <div class="col d-flex align-items-stretch">
+            <div class="card m-4" style="">
+            <%= image_tag(event.event_header.representation(resize_to_limit: [500, 500])) %>
+            <div class="card-body">
+                <h5 class="card-title"><%= event.title%></h5>
+                <p class="card-text"><%= event.description%></p>
+                <%= button_to "Event Page", event_path(event.id), method: :get%>
+            </div>
+            </div>
+        </div>
+
+
+        <% end %>
+        </div>
+
+
+        <h2>Past Events: </h2>
+        <% @events.past.each do |event|%>
+            <%= link_to event.title, event_path(event.id)%>
+            <% this_event = event.id %>
+            <br>
+            
+        <% end %>
     </div>
 </div>
-
-<h2 class="display-5">Events happening today</h2>
-<% @events.current.each do |event|%>
-    <div>
-        <%= link_to event.title, event_path(event.id)%>
-        <%= image_tag event.event_header.representation(resize_to_limit: [100, 100])
-%>
-        <% this_event = event.id %>
-    </div>
-    <br>
-<% end %>
-
-<h2>Upcoming Events: </h2>
-<div class="row row-cols-1 row-cols-md-2 g-4">
-
-<% @events.future.each do |event|%>
-<div class="col">
-    <div class="card m-4" style="">
-    <%= image_tag(event.event_header.representation(resize_to_limit: [500, 500])) %>
-    <div class="card-body">
-        <h5 class="card-title"><%= event.title%></h5>
-        <p class="card-text"><%= event.description%></p>
-        <%= button_to "Event Page", event_path(event.id), method: :get%>
-    </div>
-    </div>
-</div>
-
-
-<% end %>
-</div>
-
-
-<h2>Past Events: </h2>
-<% @events.past.each do |event|%>
-    <%= link_to event.title, event_path(event.id)%>
-    <% this_event = event.id %>
-    <br>
-    
-<% end %>

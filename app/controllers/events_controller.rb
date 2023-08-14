@@ -21,9 +21,10 @@ class EventsController < ApplicationController
         @user = current_user
         @event = Event.new(event_params)
         @event.creator = @user
+        
 
         if @event.save
-
+            @event.attendees << @user
             redirect_to root_path
         else
 
