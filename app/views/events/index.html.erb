@@ -16,12 +16,16 @@
     <div class="event-index-body">
         <h2 class="display-5">Events happening today</h2>
         <% @events.current.each do |event|%>
-            <div>
-                <%= link_to event.title, event_path(event.id)%>
-                <%= image_tag event.event_header.representation(resize_to_limit: [100, 100])
-        %>
-                <% this_event = event.id %>
+            <div class="col d-flex align-items-stretch">
+            <div class="card m-4" style="">
+            <%= image_tag(event.event_header.representation(resize_to_limit: [500, 500])) %>
+            <div class="card-body">
+                <h5 class="card-title"><%= event.title%></h5>
+                <p class="card-text"><%= event.description%></p>
+                <%= button_to "Event Page", event_path(event.id), method: :get%>
             </div>
+            </div>
+        </div>
             <br>
         <% end %>
 
