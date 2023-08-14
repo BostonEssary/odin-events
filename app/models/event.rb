@@ -3,6 +3,7 @@ class Event < ApplicationRecord
     has_many :event_attendees, foreign_key: :attended_event_id
     has_many :attendees, through: :event_attendees, source: :attendee
     has_one_attached :event_header
+    validates_date :event_date, on: :create, on_or_after: :today, message: "can not be in the past"
 
 
 

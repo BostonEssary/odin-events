@@ -25,4 +25,7 @@
    <br>
   <%= form.submit %>
 <% end %>
+<% @event.errors.each do |error|%>
+  <li class="text-danger m-2"><%= error.full_message%></li>
+<% end %>
 </div>

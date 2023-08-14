@@ -9,6 +9,7 @@
                     <%= button_to "Create thyme//capsule", new_event_path, method: :get, form_class: "hero-button btn btn-primary btn-lg mt-4"  %>
                 <% else %>
                 <%= button_to "Log In", new_user_session_path, method: :get, form_class: "hero-button btn btn-primary btn-lg mt-4"  %>
+                <%= button_to "Sign Up", new_user_registration_path, method: :get, form_class: "hero-button btn btn-primary btn-lg mt-4"  %>
                 <% end %>
             </div>
         </div>
@@ -22,7 +23,7 @@
             <div class="card-body">
                 <h5 class="card-title"><%= event.title%></h5>
                 <p class="card-text"><%= event.description%></p>
-                <%= button_to "Event Page", event_path(event.id), method: :get%>
+                <%= button_to "Event Page", event_path(event.id), method: :get, class: "btn btn-primary btn-lg mt-4" %>
             </div>
             </div>
         </div>
@@ -39,7 +40,7 @@
             <div class="card-body">
                 <h5 class="card-title"><%= event.title%></h5>
                 <p class="card-text"><%= event.description%></p>
-                <%= button_to "Event Page", event_path(event.id), method: :get%>
+                <%= button_to "Event Page", event_path(event.id), method: :get, class: "btn btn-primary btn-lg mt-4"%>
             </div>
             </div>
         </div>
