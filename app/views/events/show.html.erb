@@ -15,7 +15,10 @@
 </div>
 
 <h3>Created By <%= link_to @event.creator.first_name, user_path(@event.creator.id)%></h3>
-
+  <% if @event.creator == current_user %>
+    <%= button_to "Edit", edit_event_path, method: :get, form_class: "btn btn-primary btn-lg mt-4" %>
+  <% else %>
+  <% end %>
 <br>
 <h3>Attendees:</h3>
 <% @event.attendees.all.each do |attendee|%>
