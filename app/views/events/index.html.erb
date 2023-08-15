@@ -44,13 +44,12 @@
             </div>
             </div>
         </div>
-
-
+            <br>
         <% end %>
         </div>
 
 
-        <h2>Past Events: </h2>
+        <h2 class="display-5">Past Events</h2>
         <% @events.past.each do |event|%>
             <%= link_to event.title, event_path(event.id)%>
             <% this_event = event.id %>
