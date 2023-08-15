@@ -17,6 +17,7 @@
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name" %>
   </div>
+  
 
   <div class="field">
     <%= f.label :password %>
@@ -30,6 +31,13 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
+   <br>
+  </div>
+  
 
   <div class="actions">
     <%= f.submit "Sign up" %>

@@ -10,4 +10,8 @@ class UsersController < ApplicationController
         @events = @user.attended_events
     end
 
+    def edit
+        @user = current_user
+    end
+
 end

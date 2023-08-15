@@ -10,6 +10,18 @@ class EventsController < ApplicationController
     def new
         @event = Event.new()
     end
+
+    def edit
+        @event = Event.find(params[:id])
+
+        if @event.creator != current_user
+            redirect_to notcreator_path
+        else
+        end
+
+
+
+    end
     def show
         @event = Event.find(params[:id])
         @time = @event.event_time.strftime("%I:%M %p")
@@ -27,7 +39,6 @@ class EventsController < ApplicationController
             @event.attendees << @user
             redirect_to root_path
         else
-
             render :new, status: :unprocessable_entity
         end
 

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   get '/profile', to: 'users#profile'
+  get '/notcreator', to: 'events#notcreator'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

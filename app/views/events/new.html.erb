@@ -17,9 +17,9 @@
    <br>
   <%= form.date_select :event_date %>
    <br>
-   <%= form.label :event_time, "Time: "%>
+   <%= form.label :event_time, "Time: " %>
    <br>
-  <%= form.time_field :event_time %>
+  <%= form.time_select :event_time, {ampm: true} %>
    <br>
     <%= form.file_field :event_header %>
    <br>
