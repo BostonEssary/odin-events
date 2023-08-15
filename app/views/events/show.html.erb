@@ -13,10 +13,13 @@
 
   <p><%= @time%></p>
 </div>
+
+<h3>Created By <%= link_to @event.creator.first_name, user_path(@event.creator.id)%></h3>
+
 <br>
 <h3>Attendees:</h3>
 <% @event.attendees.all.each do |attendee|%>
-    <%= attendee.email%>
+    <%= link_to attendee.first_name, user_path(attendee.id)%>
     <br>
     
 <% end %>

@@ -1,8 +1,12 @@
-<h1>This is the Users Show page</h1>
-<%= @user.email %>
-<%= @user.first_name%>
-<br>
+<h1><%= @user.first_name%></h1>
 
+<br>
+<h2>Created Events</h2>
+<% Event.where("creator_id == ?", @user.id ).each do |event|%>
+<%= link_to event.title, event_path(event.id)%>
+    <br>
+<% end %>
+<br>
 <h2>Past Events:</h2>
 <% @user.attended_events.where("event_date < ?", Date.today).each do |event|%>
     <%= link_to event.title, event_path(event.id)%>
@@ -20,8 +24,3 @@
     <%= link_to event.title, event_path(event.id)%>
     <br>
 <% end %>
-
-
-
-
-
