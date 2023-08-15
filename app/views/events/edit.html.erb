@@ -5,5 +5,21 @@
   <br>
   <%= form.text_field :title %>
   <br>
+  <br>
+  <%= form.label :description, "Description: "%>
+  <br>
+  <%= form.text_area :description, size: "60x10" %>
+  <br>
+   <br>
+  <%= form.label :event_date, "Date: "%>
+   <br>
+  <%= form.date_select :event_date %>
+   <br>
+   <%= form.label :event_time, "Time: " %>
+   <br>
+  <%= form.time_select :event_time, {ampm: true} %>
+   <br>
+    <%= form.file_field :event_header %>
+   <br>
     <%= form.submit "Update" %>
 <% end %>
