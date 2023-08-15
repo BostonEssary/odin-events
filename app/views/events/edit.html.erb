@@ -1,1 +1,9 @@
 <h1>This is the edit page for an event</h1>
+
+<%= form_with model: @event, method: :patch do |form| %>
+    <%= form.label :title, "Title: "%>
+  <br>
+  <%= form.text_field :title %>
+  <br>
+    <%= form.submit "Update" %>
+<% end %>
