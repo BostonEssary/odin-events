@@ -5,6 +5,7 @@
   <% else %>
     <p>No Image to show!</p>
   <% end %>
+  <%= link_to "Edit Profile?", edit_user_registration_path %>
 
 
 <% @user.attended_events.all.each do |event|%>
