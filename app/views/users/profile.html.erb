@@ -1,7 +1,7 @@
 <h1>Welcome back,  <%= @user.first_name%>!</h1>
 
 <% if @user.avatar.attached? %>
-    <p><%= image_tag(@user.avatar.representation(resize_to_limit: [500, 500])) %></p>
+    <p><%= image_tag(@user.avatar.representation(resize_to_limit: [500, 500]), class: "rounded-circle") %></p>
   <% else %>
     <p>No Image to show!</p>
   <% end %>
