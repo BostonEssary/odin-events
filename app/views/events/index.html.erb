@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="event-index-body">
+    <div class="event-index-body m-4">
         <h2 class="display-5">Events happening today</h2>
         <% @events.current.each do |event|%>
             <div class="col d-flex align-items-stretch">
@@ -44,12 +44,13 @@
             </div>
             </div>
         </div>
-            <br>
+
+
         <% end %>
         </div>
 
 
-        <h2 class="display-5">Past Events</h2>
+        <h2>Past Events: </h2>
         <% @events.past.each do |event|%>
             <%= link_to event.title, event_path(event.id)%>
             <% this_event = event.id %>
