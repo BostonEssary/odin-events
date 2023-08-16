@@ -34,6 +34,7 @@ class EventsController < ApplicationController
     end
 
     def show
+        @user = current_user
         @event = Event.find(params[:id])
         @time = @event.event_time.strftime("%I:%M %p")
         @date = @event.event_date.strftime("%B %d, %Y")
@@ -64,6 +65,17 @@ class EventsController < ApplicationController
         else
             @event.attendees << @user
             redirect_to @event, notice: 'You are now attending this event!'
+        end
+
+    end
+
+    def unattend
+        @user = current_user
+        @event = Event.find(params[:id])
+
+        if @event.attendees.include?(@user)
+            @event.attendees.delete(@user)
+            redirect_to @event, notice: 'You are no longer attending this event'
         end
 
     end

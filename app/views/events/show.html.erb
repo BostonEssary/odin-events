@@ -26,7 +26,11 @@
     <br>
     
 <% end %>
-<%= link_to "Attend?", attend_event_path(@event.id)%>
+<% if @event.attendees.include?(@user) %>
+  <%= link_to "Unattend?", unattend_event_path(@event.id)%>
+<% else %>
+  <%= link_to "Attend?", attend_event_path(@event.id)%>
+<% end %>
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>

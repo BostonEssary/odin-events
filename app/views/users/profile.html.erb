@@ -1,5 +1,10 @@
 <h1>Welcome back,  <%= @user.first_name%>!</h1>
-<%= @user.avatar%>
+
+<% if @user.avatar.attached? %>
+    <p><%= image_tag(@user.avatar.representation(resize_to_limit: [500, 500])) %></p>
+  <% else %>
+    <p>No Image to show!</p>
+  <% end %>
 
 
 <% @user.attended_events.all.each do |event|%>
