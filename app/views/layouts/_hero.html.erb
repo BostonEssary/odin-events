@@ -1,0 +1,14 @@
+<div  class="event-hero container-fluid mb-4">
+        <div class="row h-100 p-5">
+            <div class="event-hero-content col-6 align-self-center ">
+                <h1 class="event-hero-header display-1 fwf-bold">thyme//capsule</h1>
+                <h2 class="event-hero-description display-5 fst-italic " >Where events are created and remembered</h2>
+                <% if user_signed_in? %>
+                    <%= button_to "Create thyme//capsule", new_event_path, method: :get, form_class: "hero-button btn btn-primary btn-lg mt-4"  %>
+                <% else %>
+                <%= button_to "Log In", new_user_session_path, method: :get, form_class: "hero-button btn btn-primary btn-lg mt-4"  %>
+                <%= button_to "Sign Up", new_user_registration_path, method: :get, form_class: "hero-button btn btn-primary btn-lg mt-4"  %>
+                <% end %>
+            </div>
+        </div>
+    </div>

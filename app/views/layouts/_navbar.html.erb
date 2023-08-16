@@ -1,15 +1,15 @@
 
 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container-fluid d-flex justify-content-between">
     <%= link_to "t//c", root_path, class: "navbar-brand"%>
    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
         <% if user_signed_in? %>
             <a class="nav-link active" aria-current="page" href="/events">Events</a>
@@ -18,7 +18,7 @@
             <%= link_to "Profile", profile_path, class: "nav-link active"%>
           </li>
           <li class="nav-item">
-            <%= button_to "Sign out", destroy_user_session_path, method: :delete, form_class: "nav-link active" %>
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete, form_class: "nav-link active " %>
           </li>
         <% else %>
           <li class="nav-item">

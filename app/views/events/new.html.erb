@@ -1,31 +1,42 @@
 
-
-<div class="h-screen flex flex-col items-center justify-center">
-<h1 class="m-4">Create a thyme//capsule</h1>
-<%= form_with model: @event do |form| %>
-  <%= form.label :title, "Title: "%>
-  <br>
-  <%= form.text_field :title %>
-  <br>
-  <br>
-  <%= form.label :description, "Description: "%>
-  <br>
-  <%= form.text_area :description, size: "60x10" %>
-  <br>
-   <br>
-  <%= form.label :event_date, "Date: "%>
-   <br>
-  <%= form.date_select :event_date %>
-   <br>
-   <%= form.label :event_time, "Time: " %>
-   <br>
-  <%= form.time_select :event_time, {ampm: true} %>
-   <br>
-    <%= form.file_field :event_header %>
-   <br>
-  <%= form.submit %>
-<% end %>
-<% @event.errors.each do |error|%>
-  <li class="text-danger m-2"><%= error.full_message%></li>
-<% end %>
+<div class="container-fluid justify-items-center vh-100">
+  <div class=" flex flex-col row m-4 h-100 align-items-center justify-content-md-center">
+    <div class="col-md-auto">
+      <h1 class="">Create a thyme//capsule</h1>
+      <%= form_with model: @event do |form| %>
+        <%= form.label :title, "Title: "%>
+        <br>
+        <%= form.text_field :title %>
+        <br>
+        <br>
+        <%= form.label :description, "Description: "%>
+        <br>
+        <%= form.text_area :description, size: "60x10" %>
+        <br>
+        <br>
+        <div class="my-1">
+          <%= form.label :event_date, "Date: "%>
+          <br>
+          <%= form.date_select :event_date %>
+        </div>
+        <br>
+        <div class="my-1">
+        <%= form.label :event_time, "Time: " %>
+        <br>
+        <%= form.time_select :event_time, {ampm: true} %>
+        </div>
+        <br>
+        <div class="my-1">
+        <%= form.label :event_header, "Picture: " %>
+        <br>
+          <%= form.file_field :event_header %>
+          </div>
+        <br>
+        <%= form.submit %>
+      <% end %>
+      <% @event.errors.each do |error|%>
+        <li class="text-danger m-2"><%= error.full_message%></li>
+      <% end %>
+    </div>
+  </div>
 </div>
