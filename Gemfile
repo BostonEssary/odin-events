@@ -82,3 +82,5 @@ gem 'ruby-vips', '~> 2.1', '>= 2.1.4'
 gem 'image_processing', '~> 1.2'
 
 gem 'validates_timeliness', '~> 7.0.0.beta1'
+
+gem 'rails-i18n', '~> 7.0.0'

@@ -1,9 +1,7 @@
+<h1>This is the edit page for an event</h1>
 
-
-<div class="h-screen flex flex-col items-center justify-center">
-<h1 class="m-4">Create a thyme//capsule</h1>
-<%= form_with model: @event do |form| %>
-  <%= form.label :title, "Title: "%>
+<%= form_with model: @event, method: :patch do |form| %>
+    <%= form.label :title, "Title: "%>
   <br>
   <%= form.text_field :title %>
   <br>
@@ -23,9 +21,5 @@
    <br>
     <%= form.file_field :event_header %>
    <br>
-  <%= form.submit %>
+    <%= form.submit "Update" %>
 <% end %>
-<% @event.errors.each do |error|%>
-  <li class="text-danger m-2"><%= error.full_message%></li>
-<% end %>
-</div>

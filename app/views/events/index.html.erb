@@ -2,7 +2,11 @@
 <div class="event-index">
     <div  class="event-hero container-fluid mb-4">
         <div class="row h-100">
+<<<<<<< HEAD
             <div class="event-hero-content col-6 align-self-center m-4">
+=======
+            <div class="event-hero-content col-6 align-self-center ">
+>>>>>>> 5d496a752e50e9cb9cd0ab1cc50012bc5ba9233e
                 <h1 class="event-hero-header display-1 fwf-bold">thyme//capsule</h1>
                 <h2 class="event-hero-description display-5 fst-italic " >Where events are created and remembered</h2>
                 <% if user_signed_in? %>
@@ -14,6 +18,7 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <div class="event-index-body m-4">
         <h2 class="display-5">Events happening today</h2>
         
@@ -33,6 +38,10 @@
 
 
 
+=======
+    <div class="event-index-body">
+        <h2 class="display-5">Events happening today</h2>
+>>>>>>> 5d496a752e50e9cb9cd0ab1cc50012bc5ba9233e
         <% @events.current.each do |event|%>
             <div class="col d-flex align-items-stretch">
             <div class="card m-4" style="">
@@ -47,6 +56,7 @@
             <br>
         <% end %>
 
+<<<<<<< HEAD
 
 
 
@@ -74,6 +84,8 @@
 
 
 
+=======
+>>>>>>> 5d496a752e50e9cb9cd0ab1cc50012bc5ba9233e
         <h2 class="display-5">Future Events</h2>
         <div class="row row-cols-1 row-cols-md-2 g-4">
 
@@ -88,13 +100,21 @@
             </div>
             </div>
         </div>
+<<<<<<< HEAD
 
 
+=======
+            <br>
+>>>>>>> 5d496a752e50e9cb9cd0ab1cc50012bc5ba9233e
         <% end %>
         </div>
 
 
+<<<<<<< HEAD
         <h2>Past Events: </h2>
+=======
+        <h2 class="display-5">Past Events</h2>
+>>>>>>> 5d496a752e50e9cb9cd0ab1cc50012bc5ba9233e
         <% @events.past.each do |event|%>
             <%= link_to event.title, event_path(event.id)%>
             <% this_event = event.id %>
