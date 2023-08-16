@@ -1,4 +1,4 @@
-<h1><%= @user.first_name%></h1>
+<h1 class="m-2"><%= image_tag(@user.avatar.representation(resize_to_limit: [100, 100]), class: "rounded-circle") %> <%= @user.first_name%></h1>
 
 <br>
 <h2>Created Events</h2>
