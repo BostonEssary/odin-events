@@ -1,31 +1,46 @@
-<% if @user.avatar.attahed? %>
-  <%= image_tag(@user.avatar.representation(resize_to_limit: [100, 100]), class: "rounded-circle") %> 
-  <% else %>
-   <%= image_tag("default-avatar.jpg", size: '100x100', class: "rounded-circle")  %>
-<% end %>
+<div class="show-user vh-100 d-flex flex-column justify-content-center align-items-center ">
+    <div class="user-avatar">
+        <% if @user.avatar.attached? %>
+            <%= image_tag(@user.avatar.representation(resize_to_limit: [100, 100]), class: "rounded-circle") %> 
+        <% else %>
+            <%= image_tag("default-avatar.jpg", size: '100x100', class: "rounded-circle")  %>
+        <% end %>
+        <h1><%= @user.first_name%></h1>
+    </div>
 
 
-<br>
-<h2>Created Events</h2>
-<% Event.where("creator_id == ?", @user.id ).each do |event|%>
-<%= link_to event.title, event_path(event.id)%>
     <br>
-<% end %>
-<br>
-<h2>Past Events:</h2>
-<% @user.attended_events.where("event_date < ?", Date.today).each do |event|%>
-    <%= link_to event.title, event_path(event.id)%>
+    <div class="created-events">
+        <h2>Created Events</h2>
+        <% Event.where("creator_id == ?", @user.id ).each do |event|%>
+            <%= link_to event.title, event_path(event.id)%>
+            <br>
+        <% end %>
+    </div>
     <br>
-<% end %>
 
-<h2>Events I am going to today:</h2>
-<% @user.attended_events.where("event_date = ?", Date.today).each do |event|%>
-    <%= link_to event.title, event_path(event.id)%>
-    <br>
-<% end %>
+    <div class="attended-events">
+        <h2>Events I have Attended</h2>
+        <% @user.attended_events.where("event_date < ?", Date.today).each do |event|%>
+            <%= link_to event.title, event_path(event.id)%>
+            <br>
+    <% end %>
+    </div>
+    
+    <div class="attending-events">
+    <h2>Events I am going to today</h2>
+    <% @user.attended_events.where("event_date = ?", Date.today).each do |event|%>
+        <%= link_to event.title, event_path(event.id)%>
+        <br>
+    <% end %>
+    </div>
+    
+    <div class="future-events">
+        <h2>Events that I am going to in the future </h2>
+        <% @user.attended_events.where("event_date > ?", Date.today).each do |event|%>
+            <%= link_to event.title, event_path(event.id)%>
+            <br>
+        <% end %>
+    </div>
 
-<h2>Future Events: </h2>
-<% @user.attended_events.where("event_date > ?", Date.today).each do |event|%>
-    <%= link_to event.title, event_path(event.id)%>
-    <br>
-<% end %>
+</div>
