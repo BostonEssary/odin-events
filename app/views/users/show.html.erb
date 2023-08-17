@@ -1,4 +1,9 @@
-<h1 class="m-2"><%= image_tag(@user.avatar.representation(resize_to_limit: [100, 100]), class: "rounded-circle") %> <%= @user.first_name%></h1>
+<% if @user.avatar.attahed? %>
+  <%= image_tag(@user.avatar.representation(resize_to_limit: [100, 100]), class: "rounded-circle") %> 
+  <% else %>
+   <%= image_tag("default-avatar.jpg", size: '100x100', class: "rounded-circle")  %>
+<% end %>
+
 
 <br>
 <h2>Created Events</h2>
