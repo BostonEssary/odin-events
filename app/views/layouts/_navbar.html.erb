@@ -12,8 +12,16 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
         <% if user_signed_in? %>
-            <a class="nav-link active" aria-current="page" href="/events">Events</a>
-          </li>
+            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Events
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Index", root_path, class: "dropdown-item"%></li>
+            <li><%= link_to "Create Event", new_event_path, class: "dropdown-item"%></li>            
+          </ul>
+        </li>
+
           <li class="nav-item">
             <%= link_to "Profile", profile_path, class: "nav-link active"%>
           </li>
