@@ -6,7 +6,7 @@
       
       
       <% if @event.event_header.attached? %>
-        <p><%= image_tag(@event.event_header.representation(resize_to_limit: [500, 500])) %></p>
+        <p><%= image_tag(@event.event_header.representation(resize_to_limit: [500, 500]), class: "img-fluid") %></p>
       <% else %>
         <p>No Image to show!</p>
       <% end %>
@@ -18,22 +18,26 @@
 
     </div>
 
-    <h6>Created By <%= link_to image_tag(@user.avatar.representation(resize_to_limit: [100, 100])), user_path(@event.creator.id)%> <%= button_to "Edit", edit_event_path, method: :get, form_class: "btn btn-primary btn-sm" %> </h6>
+    <h6>Created By <%= link_to image_tag(@event.creator.avatar.representation(resize_to_limit: [100, 100]), class: "avatar rounded-circle m-2"), user_path(@event.creator.id)%> 
+    <br>
+    
       <% if @event.creator == current_user %>
-        
+        <%= button_to "Edit Post?", edit_event_path, method: :get, form_class: "btn btn-primary btn-sm mt-3" %> </h6>
       <% else %>
       <% end %>
     <br>
     <h3>Attendees</h3>
+    <div class="avatars m-2">
     <% @event.attendees.all.each do |attendee|%>
-        <%= link_to attendee.first_name, user_path(attendee.id)%>
+        <%= link_to image_tag(attendee.avatar.representation(resize_to_fill: [100, 100]), class: "avatar rounded-circle"), user_path(attendee.id), class: "avatars__item"%>
         <br>
-        
     <% end %>
+    </div>
+
     <% if @event.attendees.include?(@user) %>
-      <%= link_to "Unattend?", unattend_event_path(@event.id)%>
+      <%= button_to "Unattend Event?", unattend_event_path(@event.id), method: :get, form_class: "btn btn-primary btn-sm mt-3"%>
     <% else %>
-      <%= link_to "Attend?", attend_event_path(@event.id)%>
+      <%= button_to "Attend Event?", attend_event_path(@event.id), method: :get, form_class: "btn btn-primary btn-sm mt-3"%>
     <% end %>
     <% if flash[:notice] %>
       <div class="notice"><%= flash[:notice] %></div>
