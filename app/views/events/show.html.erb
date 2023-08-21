@@ -18,7 +18,7 @@
 
     </div>
 
-    <h6>Created By <%= link_to image_tag(@event.creator.avatar.representation(resize_to_limit: [100, 100]), class: "avatar rounded-circle m-2"), user_path(@event.creator.id)%> 
+    <h6>Created By <%= link_to image_tag(@event.creator.avatar.representation(resize_to_fill: [100, 100]), class: "avatar rounded-circle m-2"), user_path(@event.creator.id)%> 
     <br>
     
       <% if @event.creator == current_user %>

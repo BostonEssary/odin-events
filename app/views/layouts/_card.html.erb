@@ -1,13 +1,14 @@
-<% arr.each do |event|%>
-            <div class="col d-flex align-items-stretch">
-            <div class="card m-4" style="">
+<div class="col d-flex align-items-stretch">
+    <div class="card m-4" style="">
+        <% if event.event_header.attached? %>
             <%= image_tag(event.event_header.representation(resize_to_limit: [500, 500])) %>
-            <div class="card-body">
-                <h5 class="card-title"><%= event.title%></h5>
-                <p class="card-text"><%= event.description%></p>
-                <%= button_to "Event Page", event_path(event.id), method: :get, class: "btn btn-primary btn-lg mt-4" %>
-            </div>
-            </div>
+        <% else %>
+            <%= image_tag("default-event-header.jpg")  %>
+        <% end %>
+        <div class="card-body">
+            <h5 class="card-title"><%= event.title%></h5>
+            <p class="card-text"><%= event.description%></p>
+            <%= button_to "Event Page", event_path(event.id), method: :get, class: "btn btn-primary btn-lg mt-4" %>
         </div>
-            <br>
-<% end %>
+    </div>
+</div>
