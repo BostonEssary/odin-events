@@ -1,14 +1,19 @@
-<h1>Welcome back,  <%= @user.first_name%>!</h1>
 
-<% if @user.avatar.attached? %>
-    <p><%= image_tag(@user.avatar.representation(resize_to_fill: [100, 100]), class: "avatar rounded-circle") %></p>
-  <% else %>
-    <p>No Image to show!</p>
-  <% end %>
-  <%= link_to "Edit Profile?", edit_user_registration_path %>
+<div class="container-fluid vh-100 d-flex flex-column justify-content-center row">
+  <div class= "col-10 col-md-5 col-lg-6 col-xl-10 align-self-center bg-white p-4 justify-content-center d-flex flex-column rounded align-items-center">
+    <div class="profile-header d-flex flex-column align-items-center">
+      <h1>Welcome back,  <%= @user.first_name%>!</h1>
+      <% if @user.avatar.attached? %>
+          <p><%= image_tag(@user.avatar.representation(resize_to_fill: [100, 100]), class: "avatar rounded-circle") %></p>
+        <% else %>
+          <p>No Image to show!</p>
+        <% end %>
+    </div>
 
 
-<% @user.attended_events.all.each do |event|%>
-    <%= link_to event.title, event_path(event.id)%>
-    <br>
-<% end %>
+
+
+
+      <%= button_to "Edit Profile?", edit_user_registration_path, method: :get, class: "btn btn-primary btn-sm mt-4" %>
+  </div>
+</div>

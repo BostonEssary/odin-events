@@ -1,46 +1,60 @@
-<div class="m-5">
+<div class="container text-center">
+  <div class="row vh-100 justify-content-center ">
+    <div class="col-10 col-md-10 m-4 align-self-center bg-white p-4 justify-content-center align-items-start d-flex flex-column rounded">
+      <div class="flex flex-col text-start w-100">
+        <h2 class="text-4xl mb-2"><%= @event.title %>
+        </h2>
+        
+        
+        <% if @event.event_header.attached? %>
+          <p><%= image_tag(@event.event_header.representation(resize_to_limit: [500, 500]), class: "img-fluid") %></p>
+        <% else %>
+          <p>No Image to show!</p>
+        <% end %>
+        <p class="fs-6"><%= @event.description %></p>
+        
 
-    <div class="flex flex-col items-start">
-      <h2 class="text-4xl mb-2"><%= @event.title %>
-      </h2>
+        <p class="text-body-secondary">Happening on <%= @date%> @ <%= @time%></p>
+
+
+
+        <h6>Created By
+        <% if @event.creator.avatar.attached? %>
+          <%= link_to image_tag(@event.creator.avatar.representation(resize_to_fill: [100, 100]), class: "avatar rounded-circle m-2"), user_path(@event.creator.id)%> 
+        <% else %>
+          <%= link_to image_tag("default-avatar.jpg", size: '100x100', class: "avatar rounded-circle m-2"), user_path(@event.creator.id) %> 
+        <% end %>
+         </h6>
+        
+      <br>
       
+        <% if @event.creator == current_user %>
+          <%= button_to "Edit Post?", edit_event_path, method: :get, form_class: "btn btn-primary btn-sm mt-3" %> </h6>
+        <% else %>
+        <% end %>
+      </div>
+
       
-      <% if @event.event_header.attached? %>
-        <p><%= image_tag(@event.event_header.representation(resize_to_limit: [500, 500]), class: "img-fluid") %></p>
-      <% else %>
-        <p>No Image to show!</p>
+      <br>
+      <h3>Attendees</h3>
+      <div class="avatars m-2">
+      <% @event.attendees.all.each do |attendee|%>
+        <% if attendee.avatar.attached? %>
+            <%= link_to image_tag(attendee.avatar.representation(resize_to_fill: [100, 100]), class: "rounded-circle"), user_path(attendee.id), class: "avatars__item"%>
+        <% else %>
+          <%= link_to image_tag("default-avatar.jpg", size: '100x100'), user_path(attendee.id), class: "avatars__item rounded-circle"%>
+        <% end %>
+          <br>
       <% end %>
-      <p class="fs-6"><%= @event.description %></p>
-      
+      </div>
 
-      <p class="text-body-secondary"><%= @date%> @ <%= @time%></p>
-
-
-    </div>
-
-    <h6>Created By <%= link_to image_tag(@event.creator.avatar.representation(resize_to_fill: [100, 100]), class: "avatar rounded-circle m-2"), user_path(@event.creator.id)%> 
-    <br>
-    
-      <% if @event.creator == current_user %>
-        <%= button_to "Edit Post?", edit_event_path, method: :get, form_class: "btn btn-primary btn-sm mt-3" %> </h6>
+      <% if @event.attendees.include?(@user) %>
+        <%= button_to "Unattend Event?", unattend_event_path(@event.id), method: :get, form_class: "btn btn-primary btn-sm mt-3"%>
       <% else %>
+        <%= button_to "Attend Event?", attend_event_path(@event.id), method: :get, form_class: "btn btn-primary btn-sm mt-3"%>
       <% end %>
-    <br>
-    <h3>Attendees</h3>
-    <div class="avatars m-2">
-    <% @event.attendees.all.each do |attendee|%>
-        <%= link_to image_tag(attendee.avatar.representation(resize_to_fill: [100, 100]), class: "avatar rounded-circle"), user_path(attendee.id), class: "avatars__item"%>
-        <br>
-    <% end %>
-    </div>
-
-    <% if @event.attendees.include?(@user) %>
-      <%= button_to "Unattend Event?", unattend_event_path(@event.id), method: :get, form_class: "btn btn-primary btn-sm mt-3"%>
-    <% else %>
-      <%= button_to "Attend Event?", attend_event_path(@event.id), method: :get, form_class: "btn btn-primary btn-sm mt-3"%>
-    <% end %>
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
+      <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+      <% end %>
 
 </div>

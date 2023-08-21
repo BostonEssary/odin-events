@@ -1,4 +1,5 @@
-<div class="show-user vh-75 d-flex flex-column justify-content-center align-items-center ">
+<div class="container-fluid vh-100 d-flex flex-column justify-content-center row">
+  <div class= "col-10 col-md-5 col-lg-6 col-xl-10 align-self-center bg-white p-4 justify-content-center d-flex flex-column rounded align-items-center">
     <div class="user-avatar d-flex flex-column align-items-center m-4">
         <% if @user.avatar.attached? %>
             <%= image_tag(@user.avatar.representation(resize_to_fill: [100, 100]), class: "rounded-circle") %> 
@@ -43,5 +44,6 @@
                 <br>
             <% end %>
         </div>
+    </div>
     </div>
 </div>
